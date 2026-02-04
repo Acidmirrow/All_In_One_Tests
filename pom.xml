@@ -50,6 +50,11 @@
             <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.19.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -77,7 +82,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Allure Maven Plugin – генерирует отчёт -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -86,7 +90,6 @@
                     <reportVersion>2.30.0</reportVersion>
                 </configuration>
                 <executions>
-                    <!-- После фазы verify генерируем статический сайт -->
                     <execution>
                         <id>allure-report</id>
                         <phase>verify</phase>
