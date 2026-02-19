@@ -13,8 +13,13 @@ public class ConvertStringToCamelCase {
      */
 
     static String toCamelCase(String s){
-
-        return "";
+        StringBuilder sb=new StringBuilder(s);
+        for (int i = 0; i < s.length(); i++) {
+            if(s.charAt(i)=='-'||s.charAt(i) == '_'){
+                sb.setCharAt(i+1, Character.toUpperCase(sb.charAt(i+1)));
+            }
+        }
+        return sb.toString().replace("-","").replace("_","");
     }
 
     @Test
@@ -29,4 +34,13 @@ public class ConvertStringToCamelCase {
         System.out.println("input: "+input);
         assertEquals("theStealthWarrior", toCamelCase(input));
     }
+
+    @Test
+    public void testSomeDashLowerStartWithLowerCase() {
+        String input = "the-stealth-Warrior";
+        System.out.println("input: "+input);
+        assertEquals("theStealthWarrior", toCamelCase(input));
+    }
+
+
 }
